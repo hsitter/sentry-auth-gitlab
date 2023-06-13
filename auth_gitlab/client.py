@@ -35,7 +35,10 @@ class GitLabClient:
             raise GitLabApiError(f"{e}", status=getattr(e, "status_code", 0))
         if req.status_code < 200 or req.status_code >= 300:
             raise GitLabApiError(req.content, status=req.status_code)
-        return json.loads(req.content)
+        return req
+
+    def _get(self, path):
+        return json.loads(self._request(path).content)
 
     def get_user(self):
-        return self._request("/user")
+        return self._get("/user")
