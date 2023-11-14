@@ -44,7 +44,7 @@ class GitLabOAuth2Provider(OAuth2Provider):
         data = state['data']
         user_data = state['user']
         return {
-            'id': user_data['id'],
+            'id': user_data['sub'],
             'email': user_data['email'],
             'name': user_data['name'],
             'data': self.get_oauth_data(data),

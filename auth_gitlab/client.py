@@ -4,6 +4,7 @@ from sentry import http
 from sentry.utils import json
 
 from .constants import API_ENDPOINT
+from .constants import USERINFO_URL
 
 
 class GitLabApiError(Exception):
@@ -28,7 +29,7 @@ class GitLabClient:
 
         try:
             req = self.http.get(
-                f"{API_ENDPOINT}/{path.lstrip('/')}",
+                path,
                 headers=headers,
             )
         except RequestException as e:
@@ -41,4 +42,4 @@ class GitLabClient:
         return json.loads(self._request(path).content)
 
     def get_user(self):
-        return self._get("/user")
+        return self._get(USERINFO_URL)
