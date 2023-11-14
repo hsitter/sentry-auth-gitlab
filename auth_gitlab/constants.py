@@ -11,3 +11,4 @@ BASE_SCHEME = getattr(settings, 'GITLAB_HTTP_SCHEME', 'https')
 ACCESS_TOKEN_URL = f"{BASE_SCHEME}://{BASE_DOMAIN}/oauth/token"
 AUTHORIZE_URL = f"{BASE_SCHEME}://{BASE_DOMAIN}/oauth/authorize"
 API_ENDPOINT = f"{BASE_SCHEME}://{BASE_DOMAIN}/api/v4"
+USERINFO_URL = f'{BASE_SCHEME}://{BASE_DOMAIN}/oauth/userinfo'
